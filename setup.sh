@@ -1,0 +1,2 @@
+Docker pull alpine:latest
+

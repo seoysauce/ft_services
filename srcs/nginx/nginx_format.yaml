@@ -34,6 +34,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    metallb.universe.tf/allow-shared-ip: shared
   name: nginx-service
 spec:
   selector:
@@ -52,4 +54,4 @@ spec:
       port: 22
       targetPort: 22
   type: LoadBalancer
-  loadBalancerIP: 172.17.0.2
+  #  loadBalancerIP: 172.17.0.2

@@ -15,7 +15,7 @@ RUN apk update && apk add openssl nginx
 #RUN chown -R www:www /var/lib/nginx
 #RUN chown -R www:www /www
 
-COPY server .
+COPY default.conf .
 COPY run.sh .
 COPY index.html .
 #COPY test.sh .

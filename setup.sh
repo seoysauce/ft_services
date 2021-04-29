@@ -19,11 +19,13 @@ echo "nginx setup start"
 docker build -t alpine-nginx srcs/nginx/
 kubectl apply -f ./srcs/nginx/nginx_format.yaml
 
+echo "mysql setup start"
+
 echo "wordpress setup start"
 docker build -t alpine-wordpress srcs/wordpress/
 kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
 
-echo "phpmyadmin setup start"
-docker build -t alpine-phpmyadmin srcs/phpmyadmin/
-kubectl apply -f ./srcs/phpmyadmin/phpmyadmin_format.yaml
+#echo "phpmyadmin setup start"
+#docker build -t alpine-phpmyadmin srcs/phpmyadmin/
+#kubectl apply -f ./srcs/phpmyadmin/phpmyadmin_format.yaml
 kubectl get all

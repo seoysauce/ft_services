@@ -16,7 +16,6 @@ kubectl apply -f srcs/metallb-config.yaml
 #kubectl apply -f metallb-config.yaml >> $LOG_PATH
 
 echo "nginx setup start"
-docker build -t alpine-nginx srcs/nginx_test2/
-kubectl apply -f ./srcs/nginx_test2/nginx-ssh-configmap.yaml
-kubectl apply -f ./srcs/nginx_test2/nginx.yaml
+docker build -t alpine-nginx srcs/nginx/
+kubectl apply -f ./srcs/nginx/nginx_format.yaml
 kubectl get all

@@ -1,8 +1,8 @@
 openssl req -newkey rsa:4096 -days 365 -nodes -x509 -subj "/C=KR/ST=Seoul/O=42Seoul/OU=Gun/CN=localhost" -keyout localhost.dev.key -out localhost.dev.crt
 mv localhost.dev.crt etc/ssl/certs/
 mv localhost.dev.key etc/ssl/private/
-mv nginx.conf /etc/nginx/
-#mv index.html /var/www/
+mv default.conf /etc/nginx/conf.d
+mv index.html /var/www/localhost/htdocs/
 chmod 600 etc/ssl/certs/localhost.dev.crt etc/ssl/private/localhost.dev.key
 
 mkdir -p /run/nginx

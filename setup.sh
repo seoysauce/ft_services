@@ -2,7 +2,6 @@
 
 #brew install minikube
 minikube start --driver=virtualbox
-# minikube start --driver=hyperkit
 minikube status
 MINIKUBE_IP=$(minikube ip)
 eval $(minikube -p minikube docker-env)
@@ -18,4 +17,16 @@ kubectl apply -f srcs/metallb-config.yaml
 echo "nginx setup start"
 docker build -t alpine-nginx srcs/nginx/
 kubectl apply -f ./srcs/nginx/nginx_format.yaml
+
+echo "mysql setup start"
+docker build -t alpine-mysql srcs/mysql/
+kubectl apply -f ./srcs/mysql/mysql.yaml
+
+echo "wordpress setup start"
+docker build -t alpine-wordpress srcs/wordpress/
+kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
+
+#echo "phpmyadmin setup start"
+#docker build -t alpine-phpmyadmin srcs/phpmyadmin/
+#kubectl apply -f ./srcs/phpmyadmin/phpmyadmin_format.yaml
 kubectl get all

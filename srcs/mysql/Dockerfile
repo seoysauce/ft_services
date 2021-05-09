@@ -7,6 +7,6 @@ RUN apk update && apk add openrc mysql mysql-client --no-cache --quiet
 
 EXPOSE 3306
 
-CMD sleep infinite
+#CMD sleep infinite
 
-#ENTRYPOINT ["/tmp/mysql_run.sh"]
+ENTRYPOINT ["/tmp/mysql_run.sh"]

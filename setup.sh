@@ -26,7 +26,7 @@ echo "wordpress setup start"
 docker build -t alpine-wordpress srcs/wordpress/
 kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
 
-#echo "phpmyadmin setup start"
-#docker build -t alpine-phpmyadmin srcs/phpmyadmin/
-#kubectl apply -f ./srcs/phpmyadmin/phpmyadmin_format.yaml
+echo "phpmyadmin setup start"
+docker build -t alpine-phpmyadmin srcs/phpmyadmin/
+kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
 kubectl get all

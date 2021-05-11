@@ -1,5 +1,6 @@
 FROM alpine:3.12
 
+#connect mysql
 COPY wp-config.php . 
 COPY wordpress_run.sh .
 

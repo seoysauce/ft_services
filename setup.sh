@@ -29,4 +29,18 @@ kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
 echo "phpmyadmin setup start"
 docker build -t alpine-phpmyadmin srcs/phpmyadmin/
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
+
+echo "telegraf setup start"
+docker build -t service-telegraf ./srcs/telegraf/
+kubectl apply -f ./srcs/telegraf/telegraf.yaml
+
+echo "influxDB setup start"
+docker build -t service-influxdb ./srcs/influxdb/
+kubectl apply -f ./srcs/influxdb/influxdb.yaml
+kubectl apply -f ./srcs/influxdb/influxdb_conf.yaml
+
+echo "grafana setup start"
+docker build -t service-grafana ./srcs/grafana/
+kubectl apply -f ./srcs/grafana/grafana.yaml
+
 kubectl get all

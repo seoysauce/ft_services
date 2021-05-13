@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mv /tmp/default.conf /etc/nginx/conf.d
+
 PHPMYADMIN_DATA="$(wget https://www.phpmyadmin.net/home_page/version.txt -q -O-)"
 PHPMYADMIN_URL="$(echo $PHPMYADMIN_DATA | cut -d ' ' -f 3)"
 PHPMYADMIN_VER="$(echo $PHPMYADMIN_DATA | cut -d ' ' -f 1)"
@@ -15,4 +17,6 @@ rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
 chmod 777 -R /www/
 
-php -S 0.0.0.0:5000 -t /www/
+nginx -g "daemon off;"
+
+#php -S 0.0.0.0:5000 -t /www/

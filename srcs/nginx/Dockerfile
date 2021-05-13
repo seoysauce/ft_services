@@ -24,6 +24,6 @@ COPY index.html .
 
 #RUN mkdir -p /run/nginx
 #RUN mv server /etc/nginx/nginx.conf.orig
-EXPOSE 22 80 443
+EXPOSE 80 443
 
 ENTRYPOINT sh run.sh

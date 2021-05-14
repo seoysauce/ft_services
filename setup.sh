@@ -15,20 +15,20 @@ kubectl apply -f srcs/metallb-config.yaml
 #kubectl apply -f metallb-config.yaml >> $LOG_PATH
 
 echo "nginx setup start"
-docker build -t alpine-nginx srcs/nginx/
+#docker build -t alpine-nginx srcs/nginx/
 kubectl apply -f ./srcs/nginx/nginx_format.yaml
 
 echo "mysql setup start"
-docker build -t alpine-mysql srcs/mysql/
+#docker build -t alpine-mysql srcs/mysql/
 kubectl apply -f ./srcs/mysql/mysql.yaml
 
 echo "wordpress setup start"
-docker build -t alpine-wordpress srcs/wordpress/
+#docker build -t alpine-wordpress srcs/wordpress/
 kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
 
-echo "phpmyadmin setup start"
-docker build -t alpine-phpmyadmin srcs/phpmyadmin/
-kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
+#echo "phpmyadmin setup start"
+#docker build -t alpine-phpmyadmin srcs/phpmyadmin/
+#kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
 
 #echo "telegraf setup start"
 #docker build -t service-telegraf ./srcs/telegraf/

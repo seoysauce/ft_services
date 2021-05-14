@@ -17,6 +17,7 @@ rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
 chmod 777 -R /www/
 
-nginx -g "daemon off;"
+#nginx -g "daemon off;"
 
-#php -S 0.0.0.0:5000 -t /www/
+php -S 0.0.0.0:5000 -t /www/
+

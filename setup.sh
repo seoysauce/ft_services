@@ -1,9 +1,13 @@
-#rm -rf $HOME/.brew && git clone --depth=1 https://github.com/Homebrew/brew $HOME/.brew && export PATH=$HOME/.brew/bin:$PATH && brew update && echo "export PATH=$HOME/.brew/bin:$PATH" >> ~/.zshrc
-
-#brew install minikube
+# minikube reset
+minikube stop
+minikube delete
 minikube start --driver=virtualbox
 minikube status
+
+# minikube ip env setup
 MINIKUBE_IP=$(minikube ip)
+
+# pull minikube docker CLI
 eval $(minikube -p minikube docker-env)
 
 echo "metalLB setup start"
@@ -12,23 +16,19 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 sed "s/MINIKUBE_IP/$MINIKUBE_IP/g" srcs/metallb-config_format.yaml > srcs/metallb-config.yaml
 kubectl apply -f srcs/metallb-config.yaml
-#kubectl apply -f metallb-config.yaml >> $LOG_PATH
+kubectl apply -f metallb-config.yaml >> $LOG_PATH
 
-echo "nginx setup start"
-#docker build -t alpine-nginx srcs/nginx/
-kubectl apply -f ./srcs/nginx/nginx_format.yaml
+echo "build image"
+docker build -t alpine-nginx srcs/nginx/
+docker build -t alpine-mysql srcs/mysql/
+docker build -t alpine-wordpress srcs/wordpress/
+docker build -t alpine-phpmyadmin srcs/phpmyadmin/
 
-echo "mysql setup start"
-#docker build -t alpine-mysql srcs/mysql/
+echo "create object"
+kubectl apply -f ./srcs/nginx/nginx.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
-
-echo "wordpress setup start"
-#docker build -t alpine-wordpress srcs/wordpress/
-kubectl apply -f ./srcs/wordpress/wordpress_format.yaml
-
-#echo "phpmyadmin setup start"
-#docker build -t alpine-phpmyadmin srcs/phpmyadmin/
-#kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
+kubectl apply -f ./srcs/wordpress/wordpress.yaml
+kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
 
 #echo "telegraf setup start"
 #docker build -t service-telegraf ./srcs/telegraf/

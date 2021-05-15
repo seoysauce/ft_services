@@ -1,27 +1,36 @@
 FROM alpine:3.12
 
-#connect mysql
-#COPY wp-config.php . 
+MAINTAINER djeon <djeon@student.42seoul.kr>
+
 COPY wordpress_run.sh .
 COPY default.conf .
+COPY supervisor.conf /etc/supervisord.conf
 
-ADD https://wordpress.org/latest.tar.gz .
+# make nginx socket directory
+RUN mkdir -p /run/nginx
 
+# make root directory
 RUN mkdir -p /www
 
-RUN tar -xvf latest.tar.gz && \
+# pull wordpress
+ADD https://wordpress.org/latest.tar.gz .
+
+# tar wordpress
+RUN tar -xf latest.tar.gz && \
 	mv wordpress /www && \
 	rm -f latest.tar.gz
-#	mv wp-config.php /www/wordpress && \
 
+# install php7 package
 RUN apk update && \
-	apk add --no-cache php7 php7-fpm php7-opcache php7-gd php7-mysqli \
+	apk add --no-cache --quiet php7 php7-fpm php7-opcache php7-gd php7-mysqli \
 	php7-zlib php7-curl php7-mbstring php7-json php7-session
 
-RUN apk add nginx && \
+# install nginx
+RUN apk add nginx --no-cache --quiet && \
 	mv default.conf /etc/nginx/conf.d
 
-RUN mkdir -p /run/nginx
+# install supervisor
+RUN apk add supervisor --no-cache --quiet
 
 EXPOSE 5050
 

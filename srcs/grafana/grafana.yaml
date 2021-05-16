@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: grafana
-        image: service-grafana
+        image: alpine-grafana
         imagePullPolicy: Never
         volumeMounts:
           - name: grafana-config

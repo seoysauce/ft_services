@@ -23,24 +23,16 @@ docker build -t alpine-nginx srcs/nginx/
 docker build -t alpine-mysql srcs/mysql/
 docker build -t alpine-wordpress srcs/wordpress/
 docker build -t alpine-phpmyadmin srcs/phpmyadmin/
+docker build -t alpine-influxdb srcs/influxdb/
+docker build -t alpine-grafana srcs/grafana/
 
 echo "create object"
 kubectl apply -f ./srcs/nginx/nginx.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
-
-#echo "telegraf setup start"
-#docker build -t service-telegraf ./srcs/telegraf/
-#kubectl apply -f ./srcs/telegraf/telegraf.yaml
-
-#echo "influxDB setup start"
-#docker build -t service-influxdb ./srcs/influxdb/
-#kubectl apply -f ./srcs/influxdb/influxdb.yaml
-#kubectl apply -f ./srcs/influxdb/influxdb_conf.yaml
-
-#echo "grafana setup start"
-#docker build -t service-grafana ./srcs/grafana/
-#kubectl apply -f ./srcs/grafana/grafana.yaml
+kubectl apply -f ./srcs/influxdb/influxdb.yaml
+kubectl apply -f ./srcs/influxdb/influxdb_conf.yaml
+kubectl apply -f ./srcs/grafana/grafana.yaml
 
 kubectl get all

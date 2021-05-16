@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: influxdb
-        image: service-influxdb
+        image: alpine-influxdb
         imagePullPolicy: Never
         ports:
         - containerPort: 8086

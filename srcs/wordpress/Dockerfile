@@ -8,7 +8,8 @@ COPY supervisor.conf .
 COPY telegraf.conf .
 
 # make nginx socket directory
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx && \
+	mkdir -p /etc/telegraf
 
 # make root directory
 RUN mkdir -p /www

@@ -1,5 +1,7 @@
 FROM alpine:3.12
 
+MAINTAINER djeon <djeon@student.42seoul.kr>
+
 COPY dashboards.yaml .
 COPY influxdb_info.yaml .
 COPY telegraf.conf .

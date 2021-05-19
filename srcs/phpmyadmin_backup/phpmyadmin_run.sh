@@ -7,8 +7,8 @@ tar -xf phpMyAdmin-5.0.2-all-languages.tar.gz
 mv phpMyAdmin-5.0.2-all-languages/* /www/
 rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
-mv config.inc.php www/config.inc.php
-chmod 644 www/config.inc.php
+mv config.inc.php phpmyadmin/config.inc.php
+chmod 644 phpmyadmin/config.inc.php
 #chmod 777 -R /www/
 
 supervisord -c /etc/supervisord.conf

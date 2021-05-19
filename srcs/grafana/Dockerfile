@@ -2,28 +2,26 @@ FROM alpine:3.12
 
 MAINTAINER djeon <djeon@student.42seoul.kr>
 
-COPY dashboards.yaml .
-COPY influxdb_info.yaml .
 COPY telegraf.conf .
 COPY grafana_run.sh .
-COPY dashboard_all.json .
+COPY supervisord.conf .
+COPY grafana.db .
+
+RUN mkdir -p /etc/telegraf
 
 # add packages
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
-# install openrc, telegraf
-RUN apk update && apk add openrc telegraf --no-cache --quiet && \
-	mv telegraf.conf /etc/telegraf
-RUN apk add --no-cache --quiet --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ grafana
+# install openrc, telegraf, supervisor
+RUN apk update && apk add openrc telegraf supervisor --no-cache --quiet && \
+	mv telegraf.conf /etc/telegraf && \
+	mv supervisord.conf /etc/supervisord.conf
 
 # install grafana
-#RUN wget https://dl.grafana.com/enterprise/release/grafana-enterprise-7.3.6.linux-amd64.tar.gz && \
-#	tar -xf grafana-enterprise-7.3.6.linux-amd64.tar.gz --strip-components=1 -C / && \
-#	rm grafana-enterprise-7.3.6.linux-amd64.tar.gz 
+RUN apk add --no-cache --quiet --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ grafana
 
-RUN mv dashboard_all.json /usr/share/grafana/public/dashboards/
-RUN mv influxdb_info.yaml /usr/share/grafana/conf/provisioning/datasources
-RUN mv dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards
+RUN mkdir -p /usr/share/grafana/data
+RUN mv grafana.db /usr/share/grafana/data
 
 EXPOSE 3000
 

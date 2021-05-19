@@ -1,3 +1,3 @@
 rc-status
 
-grafana-server --config=/etc/grafana.ini --homepath=/usr/share/grafana
+supervisord -c /etc/supervisord.conf

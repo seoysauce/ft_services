@@ -9,7 +9,7 @@ rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
 #chmod 777 -R /www/
 
-/usr/bin/supervisord -c /etc/supervisord.conf
+supervisord -c /etc/supervisord.conf
 
 #nginx -g "daemon off;"
 

@@ -24,17 +24,10 @@ spec:
         volumeMounts:
         - name: influxdb-pv-claim
           mountPath: /var/lib/influxdb
-        - name: influxdb-config
-          subPath: influxdb.conf
-          mountPath: /etc/influxdb/influxdb.conf
-          readOnly: true
       volumes:
       - name: influxdb-pv-claim
         persistentVolumeClaim:
           claimName: influxdb-pv-claim
-      - name: influxdb-config
-        configMap:
-          name: influxdb-config
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

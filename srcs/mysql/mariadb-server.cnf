@@ -1,4 +1,5 @@
 [mysqld]
+socket=/run/mysqld/mysqld.sock
 user=root
 port=3306
 skip-networking=0

@@ -7,7 +7,7 @@ COPY mysql_init /tmp/
 COPY mysql_run.sh .
 COPY telegraf.conf .
 COPY wordpress_db.sql .
-COPY healthy.sh .
+COPY supervisord.conf .
 
 RUN chmod 777 -R /tmp/*
 
@@ -17,8 +17,9 @@ RUN mkdir -p /etc/telegraf
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 # install mysql, openrc, telegraf, supervisor
-RUN apk update && apk add openrc telegraf mysql mysql-client --no-cache --quiet && \
-	mv telegraf.conf /etc/telegraf
+RUN apk update && apk add supervisor openrc telegraf mysql mysql-client --no-cache --quiet && \
+	mv telegraf.conf /etc/telegraf && \
+	mv supervisord.conf /etc
 
 EXPOSE 3306
 

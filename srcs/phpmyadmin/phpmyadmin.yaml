@@ -27,7 +27,7 @@ kind: Service
 metadata:
   labels:
     app: phpmyadmin
-  name: lb-phpmyadmin
+  name: phpmyadmin
   annotations:
       metallb.universe.tf/allow-shared-ip: shared
 spec:

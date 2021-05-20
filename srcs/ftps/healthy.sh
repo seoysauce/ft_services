@@ -1,4 +1,4 @@
-pgrep mysql 
+pgrep vsftpd
 m=$?
 pgrep telegraf
 t=$?

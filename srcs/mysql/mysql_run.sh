@@ -11,5 +11,4 @@ mysql -u root mysql < /tmp/mysql_init
 mysql -u root wordpress_db < wordpress_db.sql
 
 telegraf
-#rc-service mariadb restart
 /usr/bin/mysqld_safe

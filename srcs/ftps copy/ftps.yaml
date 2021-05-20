@@ -23,13 +23,6 @@ spec:
                   ports:
                       - containerPort: 21
                       - containerPort: 21000
-                  livenessProbe:
-                    exec:
-                      command:
-                      - sh
-                      - healthy.sh
-                    initialDelaySeconds: 20
-                    periodSeconds: 5
 ---
 apiVersion: v1
 

@@ -3,9 +3,9 @@ FROM alpine:3.12
 MAINTAINER djeon <djeon@student.42seoul.kr>
 
 COPY telegraf.conf .
+COPY supervisord.conf .
 COPY vsftpd.conf .
 COPY ftps_run.sh .
-COPY healthy.sh .
 
 RUN mkdir -p /var/ftp && \
 	mkdir -p /etc/telegraf
@@ -14,8 +14,9 @@ RUN mkdir -p /var/ftp && \
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 # install vsftpd, openssl, telegraf, supervisor
-RUN apk update && apk add vsftpd openssl telegraf --no-cache --quiet && \
+RUN apk update && apk add vsftpd openssl telegraf supervisor --no-cache --quiet && \
 	mv telegraf.conf /etc/telegraf && \
+	mv supervisord.conf /etc && \
 	mv vsftpd.conf /etc/vsftpd
 
 # make key

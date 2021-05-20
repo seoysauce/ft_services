@@ -1,1 +1,2 @@
-supervisord -c /etc/supervisord.conf
+telegraf
+vsftpd /etc/vsftpd/vsftpd.conf

@@ -16,8 +16,8 @@ RUN mkdir -p /etc/telegraf
 # add packages
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
-# install mysql, openrc, telegraf, supervisor
-RUN apk update && apk add supervisor openrc telegraf mysql mysql-client --no-cache --quiet && \
+# install mysql, openrc, telegraf
+RUN apk update && apk add openrc telegraf mysql mysql-client --no-cache --quiet && \
 	mv telegraf.conf /etc/telegraf
 
 EXPOSE 3306

@@ -14,7 +14,7 @@ RUN mkdir -p /var/ftp && \
 RUN echo "http://dl-2.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 
 # install vsftpd, openssl, telegraf, supervisor
-RUN apk update && apk add vsftpd openssl telegraf --no-cache --quiet && \
+RUN apk update && apk add openrc vsftpd openssl telegraf --no-cache --quiet && \
 	mv telegraf.conf /etc/telegraf && \
 	mv vsftpd.conf /etc/vsftpd
 

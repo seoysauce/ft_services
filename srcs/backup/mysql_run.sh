@@ -10,5 +10,4 @@ rc-status && touch /run/openrc/softlevel && rc-service mariadb setup && rc-servi
 mysql -u root mysql < /tmp/mysql_init
 mysql -u root wordpress_db < wordpress_db.sql
 
-telegraf
-/usr/bin/mysqld_safe
+supervisord -c /etc/supervisord.conf

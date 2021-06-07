@@ -14,10 +14,10 @@
 - 쿠버네티스 클러스터에 배포될 다양한 서비스들(Nginx, Wordpress, phpMyAdmin, MySQL, Grafana, InfluxDB, FTPS)의 설치 및 배포 방법을 숙지합니다.
 
 ### 기술 스택
-Kubernetes, Docker, Nginx, MySQL
+- Kubernetes, Docker, Nginx, MySQL
 
 ### 제작 기간
-2021.04 ~ 2021.05
+- 2021.04 ~ 2021.05
 
 ## 2. 서비스 배포 화면
 

@@ -33,7 +33,7 @@
 ### MetalLB 설치
 - MetalLB는 BareMetalLoadBalancer의 약자로서, 클라우드 벤더의 ip제공 없이 Loadbalancer type의 서비스를 제공할 수 있습니다.
 
-### Nginx 설치
+### A. Nginx 설치
 #### Nginx란?
 - Nginx는 동시접속 처리에 특화된 웹 서버 프로그램입니다.
 - 프로세스를 늘리지 않기 때문에 컴퓨터 자원을 상대적으로 적게 사용하고, 빠른 처리가 가능합니다.
@@ -48,7 +48,7 @@
 - Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행합니다.<br/>
 (background로 실행 시에 Container는 Nginx 프로세스를 인지하지 못함)
 
-### Wordpress 설치
+### B. Wordpress 설치
 #### Wordpress란?
 - Wordpress는 세계 최대의 오픈소스 저작물 관리 시스템입니다. 우리나라의 서울특별시 홈페이지가 Wordpress기반으로 만들어졌습니다.
 
@@ -63,7 +63,7 @@
 - pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
 - wordpress.yaml 파일 내에서 configmap을 추가하여 데이터베이스와의 연동을 위한 wp-config.php 파일을 만듭니다.
 
-### phpMyAdmin 설치
+### C. phpMyAdmin 설치
 #### phpMyAdmin이란?
 - phpMyAdmin은 MySQL 데이터베이스를 월드 와이드 웹 상에서 관리할 목적으로 PHP로 작성한 오픈 소스 도구입니다.
 
@@ -78,7 +78,7 @@
 - pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
 - MySQL 서버와의 연동을 위해 config.inc.php 파일을 수정합니다.
 
-### MySQL 설치
+### D. MySQL 설치
 #### MySQL이란?
 - MySQL은 오픈 소스의 관계형 데이터베이스 관리 시스템(RDBMS)입니다.
 

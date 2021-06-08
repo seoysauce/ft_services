@@ -26,6 +26,9 @@
 ## 3. 서비스 배포 과정
 > Mac OS 기입니다.
 
+### 목차
+[A.개발 환경 구축](#개발-환경-구축)
+
 ### 개발 환경 구축
 - `brew install minikube` : minikube 설치
 - `minikube start --driver=virtualbox` : virtualbox기반으로 minikube 실행

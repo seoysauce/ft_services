@@ -24,7 +24,7 @@
 <img width="1177" alt="Screen Shot 2021-06-07 at 4 48 50 PM" src="https://user-images.githubusercontent.com/59330163/121011015-1804eb80-c7d1-11eb-99d8-94da88a26154.png">
 
 ## 3. 서비스 배포 과정
-> Mac OS 기입니다.
+> Mac OS 기반입니다.
 
 ### 목차
 [개발 환경 구축](#개발-환경-구축)<br/>

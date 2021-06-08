@@ -31,9 +31,17 @@
 - `minikube start --driver=virtualbox` : virtualbox기반으로 minikube 실행
 
 ### MetalLB 설치
-- MetalLB는 BareMetalLoadBalancer의 약자로서, 클라우드 벤더들의 ip제공 없이 Loadbalancer type의 서비스를 제공할 수 있습니다.
+- MetalLB는 BareMetalLoadBalancer의 약자로서, 클라우드 벤더의 ip제공 없이 Loadbalancer type의 서비스를 제공할 수 있습니다.
 
-### Nginx 설치 및 배포
+### Nginx 설치
 #### Nginx란?
 - Nginx는 동시접속 처리에 특화된 웹 서버 프로그램입니다.
 - 프로세스를 늘리지 않기 때문에 컴퓨터 자원을 상대적으로 적게 사용하고, 빠른 처리가 가능합니다.
+
+#### Nginx 설치
+> Container로 배포할 Nginx의 image를 생성합니다.
+
+- https로의 redirection기능 추가를 위해 Openssl을 활용하여 인증서를 생성합니다.
+- Nginx 서버 설정 파일인 default.conf 파일에 location 제어문을 추가하여 `/wordpress` redirection 기능과 `/phpmyadmin` reverse proxy 기능을 추가합니다.
+- Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
+- Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행시켜 줍니다.(background로 실행 시에 Container는 Nginx 프로세스를 인지하지 못함.)

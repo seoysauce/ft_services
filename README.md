@@ -24,7 +24,7 @@
 <img width="1177" alt="Screen Shot 2021-06-07 at 4 48 50 PM" src="https://user-images.githubusercontent.com/59330163/121011015-1804eb80-c7d1-11eb-99d8-94da88a26154.png">
 
 ## 3. 서비스 배포 과정
-> Mac OS 기준입니다.
+> Mac OS 기입니다.
 
 ### 개발 환경 구축
 - `brew install minikube` : minikube 설치
@@ -41,6 +41,7 @@
 #### Nginx 설치
 > Container로 배포할 Nginx의 image를 생성합니다.
 
+- Nginx 패키지를 설치합니다.
 - https로의 redirection기능 추가를 위해 Openssl을 활용하여 인증서를 생성합니다.
 - Nginx 서버 설정 파일인 default.conf 파일에 location 제어문을 추가하여 `/wordpress` redirection 기능과 `/phpmyadmin` reverse proxy 기능을 추가합니다.
 - Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
@@ -88,5 +89,43 @@
 - 이번 과제에서는 MySQL 서버와 클라이언트가 같은 pod내에서 관리되기 때문에 서버와 클라이언트를 모두 설치합니다.
 - MySQL 서버 설정을 위해 my.cnf 디렉토리에 있는 server.conf 파일을 수정합니다.
 - pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
-- Container 내부의 프로세스 상태 확인을 위해 MySQL.yaml파일에 livenessProbe 기능을 추가합니다.
-- pod가 재생성되어도 데이터베이스의 데이터 유지를 위해 MySQL.yaml파일에 PVC(Persistent Volume Claim)를 선언합니다.
+- Container 내부의 프로세스 상태 확인을 위해 mysql.yaml파일에 livenessProbe 기능을 추가합니다.
+- pod가 재생성되어도 데이터베이스의 데이터 유지를 위해 mysql.yaml파일에 PVC(Persistent Volume Claim)를 선언합니다.
+
+### E. Grafana 설치
+#### Grafana란?
+- Grafana는 메트릭 데이터를 시각화하는데 가장 최적화된 대시보드를 제공하는 오픈소스 메트릭 데이터 시각화 도구입니다.
+
+#### Grafana 설치
+> Container로 배포할 Grafana의 image를 생성합니다.
+
+- Grafana 패키지를 설치합니다.
+- Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+
+### F. InfluxDB 설치
+#### InfluxDB란?
+- InfluxDB는 인플럭스데이터가 개발한 오픈 소스 시계열 데이터베이스(TSDB)입니다.
+
+#### InfluxDB 설치
+> Container로 배포할 InfluxDB의 image를 생성합니다.
+
+- InfluxDB 패키지를 설치합니다.
+- Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.(host는 localhost로 설정)
+- pod가 재생성되어도 데이터베이스의 데이터 유지를 위해 influxdb.yaml파일에 PVC(Persistent Volume Claim)를 선언합니다.
+
+### G. FTPS 설치
+#### FTPS란?
+- FTP(File Transfer Protocol)는 TCP/IP 프로토콜을 가지고 서버와 클라이언트 사이의 파일 전송을 하기 위한 프로토콜입니다.
+- FTPS는 기존의 FTP에 전송 계층 보안(TLS)과 보안 소켓 계층(SSL) 암호화 프로토콜에 대한 지원이 추가된 프로토콜입니다.
+
+#### FTPS 설치
+> Container로 배포할 FTPS의 image를 생성합니다.
+
+- FTPS 서버 프로그램인 vsftpd 패키지를 설치합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+- Openssl을 활용하여 인증서를 생성합니다.
+- Container 내부의 프로세스 상태 확인을 위해 ftps.yaml파일에 livenessProbe 기능을 추가합니다.
+
+For details : https://velog.io/@du0928/ftservices

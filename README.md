@@ -44,4 +44,5 @@
 - https로의 redirection기능 추가를 위해 Openssl을 활용하여 인증서를 생성합니다.
 - Nginx 서버 설정 파일인 default.conf 파일에 location 제어문을 추가하여 `/wordpress` redirection 기능과 `/phpmyadmin` reverse proxy 기능을 추가합니다.
 - Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
-- Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행시켜 줍니다.(background로 실행 시에 Container는 Nginx 프로세스를 인지하지 못함.)
+- Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행시켜 줍니다.
+(background로 실행 시에 Container는 Nginx 프로세스를 인지하지 못함)

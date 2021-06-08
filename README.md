@@ -44,5 +44,49 @@
 - https로의 redirection기능 추가를 위해 Openssl을 활용하여 인증서를 생성합니다.
 - Nginx 서버 설정 파일인 default.conf 파일에 location 제어문을 추가하여 `/wordpress` redirection 기능과 `/phpmyadmin` reverse proxy 기능을 추가합니다.
 - Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
-- Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행시켜 줍니다.<br/>
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+- Nginx는 기본적으로 background로 실행되기 때문에 foreground로 설정하여 실행합니다.<br/>
 (background로 실행 시에 Container는 Nginx 프로세스를 인지하지 못함)
+
+### Wordpress 설치
+#### Wordpress란?
+- Wordpress는 세계 최대의 오픈소스 저작물 관리 시스템입니다. 우리나라의 서울특별시 홈페이지가 Wordpress기반으로 만들어졌습니다.
+
+#### Wordpress 설치
+> Container로 배포할 Wordpress의 image를 생성합니다.
+
+- alpine에서 Wordpress 설치를 위해 제공되는 패키지가 없기 때문에 `https://wordpress.org/latest.tar.gz`링크에서 직접 다운로드 받습니다.
+- Wordpress 구동에 필요한 php 모듈을 설치합니다.
+- Nginx 설정 파일인 default.conf 파일에 location 제어문을 추가하여 php-fpm으로의 redirection 기능을 넣어줍니다.<br/>
+(동적 웹사이트로의 요청을 처리하기 위함)
+- Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+- wordpress.yaml 파일 내에서 configmap을 추가하여 데이터베이스와의 연동을 위한 wp-config.php 파일을 만듭니다.
+
+### phpMyAdmin 설치
+#### phpMyAdmin이란?
+- phpMyAdmin은 MySQL 데이터베이스를 월드 와이드 웹 상에서 관리할 목적으로 PHP로 작성한 오픈 소스 도구입니다.
+
+#### phpMyAdmin 설치
+> Container로 배포할 phpMyAdmin의 image를 생성합니다.
+
+- alpine에서 phpMyAdmin 설치를 위해 제공되는 패키지가 없기 때문에`https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.tar.gz`링크에서 직접 다운로드 받습니다.
+- phpMyAdmin 구동에 필요한 php 모듈을 설치합니다.
+- Nginx 설정 파일인 default.conf 파일에 location 제어문을 추가하여 php-fpm으로의 redirection 기능을 넣어줍니다.<br/>
+(동적 웹사이트로의 요청을 처리하기 위함)
+- Container 내부의 프로세스 상태 확인을 위해 Supervisor를 설치하여 실행합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+- MySQL 서버와의 연동을 위해 config.inc.php 파일을 수정합니다.
+
+### MySQL 설치
+#### MySQL이란?
+- MySQL은 오픈 소스의 관계형 데이터베이스 관리 시스템(RDBMS)입니다.
+
+#### MySQL 설치
+> Container로 배포할 MySQL의 image를 생성합니다.
+
+- 이번 과제에서는 MySQL 서버와 클라이언트가 같은 pod내에서 관리되기 때문에 서버와 클라이언트를 모두 설치합니다.
+- MySQL 서버 설정을 위해 my.cnf 디렉토리에 있는 server.conf 파일을 수정합니다.
+- pod의 다양한 데이터를 받아서 InfluxDB에 저장하기 위해 telegraf를 설치하여 실행합니다.
+- Container 내부의 프로세스 상태 확인을 위해 MySQL.yaml파일에 livenessProbe 기능을 추가합니다.
+- pod가 재생성되어도 데이터베이스의 데이터 유지를 위해 MySQL.yaml파일에 PVC(Persistent Volume Claim)를 선언합니다.

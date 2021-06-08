@@ -128,4 +128,4 @@
 - Openssl을 활용하여 인증서를 생성합니다.
 - Container 내부의 프로세스 상태 확인을 위해 ftps.yaml파일에 livenessProbe 기능을 추가합니다.
 
-For details : https://velog.io/@du0928/ftservices
+## For details : https://velog.io/@du0928/ftservices

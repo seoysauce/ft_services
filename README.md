@@ -27,15 +27,15 @@
 > Mac OS 기입니다.
 
 ### 목차
-[개발 환경 구축](#개발-환경-구축)
-[MetalLB 설치](#MetalLB-설치)
-[A. Nginx 설치](#A.-Nginx-설치)
-[B. Wordpress 설치](#B.-Wordpress-설치)
-[C. phpMyAdmin 설치](#C.-phpMyAdmin-설치)
-[D. MySQL 설치](#D.-MySQL-설치)
-[E. Grafana 설치](#E.-Grafana-설치)
-[F. InfluxDB 설치](#F.-InfluxDB-설치)
-[G. FTPS 설치](#G.-FTPS-)
+[개발 환경 구축](#개발-환경-구축)<br/>
+[MetalLB 설치](#MetalLB-설치)<br/>
+[A. Nginx 설치](#A.-Nginx-설치)<br/>
+[B. Wordpress 설치](#B.-Wordpress-설치)<br/>
+[C. phpMyAdmin 설치](#C.-phpMyAdmin-설치)<br/>
+[D. MySQL 설치](#D.-MySQL-설치)<br/>
+[E. Grafana 설치](#E.-Grafana-설치)<br/>
+[F. InfluxDB 설치](#F.-InfluxDB-설치)<br/>
+[G. FTPS 설치](#G.-FTPS-)<br/>
 
 ### 개발 환경 구축
 - `brew install minikube` : minikube 설치

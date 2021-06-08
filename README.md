@@ -35,7 +35,7 @@
 [D. MySQL 설치](#D-MySQL-설치)<br/>
 [E. Grafana 설치](#E-Grafana-설치)<br/>
 [F. InfluxDB 설치](#F-InfluxDB-설치)<br/>
-[G. FTPS 설치](#G-FTPS-)<br/>
+[G. FTPS 설치](#G-FTPS-설치)<br/>
 
 ### 개발 환경 구축
 - `brew install minikube` : minikube 설치

@@ -22,17 +22,17 @@ docker build -t alpine-nginx srcs/nginx/
 docker build -t alpine-mysql srcs/mysql/
 docker build -t alpine-wordpress srcs/wordpress/
 docker build -t alpine-phpmyadmin srcs/phpmyadmin/
-docker build -t alpine-influxdb srcs/influxdb/
-docker build -t alpine-grafana srcs/grafana/
-docker build -t alpine-ftps srcs/ftps/
+# docker build -t alpine-influxdb srcs/influxdb/
+# docker build -t alpine-grafana srcs/grafana/
+# docker build -t alpine-ftps srcs/ftps/
 
 echo "create object"
 kubectl apply -f ./srcs/nginx/nginx.yaml
 kubectl apply -f ./srcs/mysql/mysql.yaml
 kubectl apply -f ./srcs/wordpress/wordpress.yaml
 kubectl apply -f ./srcs/phpmyadmin/phpmyadmin.yaml
-kubectl apply -f ./srcs/influxdb/influxdb.yaml
-kubectl apply -f ./srcs/grafana/grafana.yaml
-kubectl apply -f ./srcs/ftps/ftps.yaml
+# kubectl apply -f ./srcs/influxdb/influxdb.yaml
+# kubectl apply -f ./srcs/grafana/grafana.yaml
+# kubectl apply -f ./srcs/ftps/ftps.yaml
 
 kubectl get all

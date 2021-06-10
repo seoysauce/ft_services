@@ -6,7 +6,7 @@ COPY mariadb-server.cnf /tmp/
 COPY mysql_init /tmp/
 COPY mysql_run.sh .
 COPY telegraf.conf .
-COPY wordpress_db.sql .
+# COPY wordpress_db.sql .
 COPY healthy.sh .
 
 RUN chmod 777 -R /tmp/*

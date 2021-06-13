@@ -11,20 +11,20 @@ spec:
       labels:
         app: nginx
     spec:
-      containers:
+      containers: #Container로 배포할 Nginx image 이름
       - name: nginx
         image: alpine-nginx
         imagePullPolicy: IfNotPresent
-        ports:
+        ports: # Container에서 사용할 포트 설정
         - containerPort: 80
           name: http
         - containerPort: 443
           name: https
 ---
 apiVersion: v1
-kind: Service
+kind: Service # 외부와의 통신 방법 정의
 metadata:
-  annotations:
+  annotations: # 클러스터 Load Balancer의 IP를 클러스터 내부의 오브젝트 간에 공유
     metallb.universe.tf/allow-shared-ip: shared
   name: nginx
 spec:
@@ -39,4 +39,4 @@ spec:
       protocol: TCP
       port: 443
       targetPort: 443
-  type: LoadBalancer
+  type: LoadBalancer # LoadBalancer 타입으로 정의

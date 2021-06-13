@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
-MAINTAINER djeon <djeon@student.42seoul.kr>
+MAINTAINER seojeong <seojeong@student.42seoul.kr>
 
 COPY default.conf .
 COPY nginx_run.sh .
